@@ -9,6 +9,9 @@ public class Smartphone extends Prodotto {
 	public Smartphone(String nome, String descrizione, int prezzo, int iva, int codiceIMEI, int memoria) {
 		
 		super(nome, descrizione, prezzo, iva);
+		
+		setCodiceIMEI(codiceIMEI);
+		setMemoria(memoria);
 	}
 
 	public int getCodiceIMEI() {
@@ -31,8 +34,8 @@ public class Smartphone extends Prodotto {
 	public String toString() {
 		
 		return super.toString() + "\n"
-				+ "Codice IMEI dello smartphone: " + getCodiceIMEI() + "\n"
-				+ "Memoria smartphone: " + getMemoria();
+				+ "Codice IMEI dello smartphone: " + String.valueOf(getCodiceIMEI()) + "\n"
+				+ "Memoria smartphone: " + String.valueOf(getMemoria());
 	}
 	
 }

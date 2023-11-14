@@ -8,6 +8,9 @@ public class Cuffie  extends Prodotto{
 	//costruttore
 	public Cuffie(String nome, String descrizione, int prezzo, int iva, String colore, String tipo) {
 		super(nome,descrizione, prezzo, iva);
+		
+		setColore(colore);
+		setTipo(tipo);
 	}
 
 	//getters and setters

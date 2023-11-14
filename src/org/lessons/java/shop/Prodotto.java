@@ -93,7 +93,7 @@ public class Prodotto {
 		return "PRODOTTO: \n" 
 				+ "Nome: " + getNome() + "\n"
 				+ "Descrizione: " + getDescrizione() + "\n"
-				+ "Prezzo : " + getPrezzoFinale();
+				+ "Prezzo : " + String.valueOf(getPrezzoFinale());
 				
 	}
 }

@@ -10,6 +10,11 @@ public class Televisore extends Prodotto{
 	//costruttore
 	public Televisore(String nome, String descrizione, int prezzo, int iva, int altezza, int diagonale, int pollici, boolean smart) {
 		super(nome, descrizione, prezzo, iva);
+		
+		setAltezza(altezza);
+		setDiagonale(diagonale);
+		setPollici(pollici);
+		setSmart(smart);
 	}
 	
 	//getters and setters
@@ -50,7 +55,7 @@ public class Televisore extends Prodotto{
 	public String toString() {
 		
 		return super.toString() + "\n"
-				+ "Dimensioni televisore: " + getAltezza() + "x" + getDiagonale() + "\n"
-				+ "Pollici: " + getPollici() + "''";
+				+ "Dimensioni televisore: " + String.valueOf(getAltezza()) + "x" + String.valueOf(getDiagonale()) + "\n"
+				+ "Pollici: " + String.valueOf(getPollici()) + "''";
 	}
 }

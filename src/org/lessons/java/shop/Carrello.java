@@ -3,6 +3,8 @@ package org.lessons.java.shop;
 import java.util.Scanner;
 
 public class Carrello {
+	
+	static final int PRODOTTI_COUNT = 3;
 
 	public static void main(String[] args) {
 		
@@ -11,11 +13,13 @@ public class Carrello {
 		
 		boolean isFinish = false;
 		
+		Prodotto[] prodotti = new Prodotto[PRODOTTI_COUNT];
+		
 		do {
 			
 		System.out.println("Vuoi aggiungere qualcosa al carrello? si/no");
 		String strFinish = in.nextLine();
-		if(strFinish == "no") {
+		if(strFinish.equals("no")) {
 			isFinish = true;
 			break;
 		}
@@ -41,7 +45,7 @@ public class Carrello {
 		int iva = Integer.valueOf(strIva);
 		
 		//smartphone
-		if(strProduct == "smarphone") {
+		if(strProduct.equals("smartphone")) {
 			
 			System.out.println("Codice IMEI Smartphone: ");
 			String strCodiceIMEI = in.nextLine();
@@ -52,9 +56,9 @@ public class Carrello {
 			int memoria = Integer.valueOf(strMemoria);
 		
 			//creazione smartphone
-			Smartphone s1 = new Smartphone(strNome, strDescrizione, prezzo, iva, codiceIMEI, memoria);
+			prodotti[0] = new Smartphone(strNome, strDescrizione, prezzo, iva, codiceIMEI, memoria);
 		
-		} else if(strProduct == "televisore") {
+		} else if(strProduct.equals("televisore")) {
 			
 			System.out.println("Altezza televisore: ");
 			String strAltezza = in.nextLine();
@@ -73,18 +77,28 @@ public class Carrello {
 			boolean smart = strSmart == "si" ? true : false;
 			
 			//creazione televisore
-			Televisore t1 = new Televisore(strNome, strDescrizione, prezzo, iva, altezza, diagonale, pollici, smart);
+			prodotti[1] = new Televisore(strNome, strDescrizione, prezzo, iva, altezza, diagonale, pollici, smart);
 			
-		} else if(strProduct == "cuffie") {
+		} else if(strProduct.equals("cuffie")) {
 			
 			System.out.println("Colore cuffie: ");
 			String colore = in.nextLine();
 			
 			System.out.println("Tipo cuffie: wireless/cablate");
 			String tipo = in.nextLine();
+			
+			//creazione cuffie
+			prodotti[2] = new Cuffie(strNome, strDescrizione, prezzo, iva, colore, tipo);
 		}
 		
 		} while(!isFinish);
+		
+		System.out.println(
+				"Nel carrello sono presenti:" + "\n"
+				+ prodotti[0] + "\n"
+				+ prodotti[1] + "\n"
+				+ prodotti[2]
+				);
 		
 		
 		//chiusura scanner
