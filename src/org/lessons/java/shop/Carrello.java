@@ -15,6 +15,10 @@ public class Carrello {
 		
 		Prodotto[] prodotti = new Prodotto[PRODOTTI_COUNT];
 		
+		System.out.println("Possiedi una carta fedeltà? si/no");
+		String strFidelity = in.nextLine();
+		boolean fidelity = strFidelity.equals(strFidelity);
+		
 		do {
 			
 		System.out.println("Vuoi aggiungere qualcosa al carrello? si/no");
@@ -23,7 +27,7 @@ public class Carrello {
 			isFinish = true;
 			break;
 		}
-			
+		
 		System.out.println("Che elemento vuoi inserire? smartphone / televisore / cuffie");
 		String strProduct = in.nextLine();
 		
@@ -56,7 +60,7 @@ public class Carrello {
 			int memoria = Integer.valueOf(strMemoria);
 		
 			//creazione smartphone
-			prodotti[0] = new Smartphone(strNome, strDescrizione, prezzo, iva, codiceIMEI, memoria);
+			prodotti[0] = new Smartphone(strNome, strDescrizione, prezzo, iva, fidelity, codiceIMEI, memoria);
 		
 		} else if(strProduct.equals("televisore")) {
 			
@@ -77,7 +81,7 @@ public class Carrello {
 			boolean smart = strSmart == "si" ? true : false;
 			
 			//creazione televisore
-			prodotti[1] = new Televisore(strNome, strDescrizione, prezzo, iva, altezza, diagonale, pollici, smart);
+			prodotti[1] = new Televisore(strNome, strDescrizione, prezzo, iva, fidelity, altezza, diagonale, pollici, smart);
 			
 		} else if(strProduct.equals("cuffie")) {
 			
@@ -88,17 +92,49 @@ public class Carrello {
 			String tipo = in.nextLine();
 			
 			//creazione cuffie
-			prodotti[2] = new Cuffie(strNome, strDescrizione, prezzo, iva, colore, tipo);
+			prodotti[2] = new Cuffie(strNome, strDescrizione, prezzo, iva, fidelity, colore, tipo);
 		}
 		
 		} while(!isFinish);
 		
 		System.out.println(
 				"Nel carrello sono presenti:" + "\n"
-				+ prodotti[0] + "\n"
-				+ prodotti[1] + "\n"
+				+ prodotti[0] 
+				+ "\n-----------------------------------------\n"
+				+ prodotti[1] 
+				+ "\n-----------------------------------------\n"
 				+ prodotti[2]
 				);
+		
+		//somma prezzo totale del carrello
+		int sum = 0;
+		for (int x = 0; x < prodotti.length; x++) {
+			
+			Prodotto prodotto = prodotti[x];
+			
+			sum += Float.parseFloat(prodotto.getPrezzoFinale());
+		}
+		
+		System.out.println(
+				"\n-------------------------------------------\n"
+				+ "Totale carrello € " + String.format("%.2f", sum)
+				);
+		
+		if(fidelity) {
+			
+			for (int x = 0; x < prodotti.length; x++) {
+				
+				Prodotto prodotto = prodotti[x];
+				
+				sum += Float.parseFloat(prodotto.getPrezzoScontato());
+			}
+			
+			System.out.println(
+					"\n-------------------------------------------\n"
+					+ "Totale con sconto € " + String.format("%.2f", sum)
+					);
+		}
+		
 		
 		
 		//chiusura scanner

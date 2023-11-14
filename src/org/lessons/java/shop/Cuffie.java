@@ -6,8 +6,8 @@ public class Cuffie  extends Prodotto{
 	private String tipo;
 	
 	//costruttore
-	public Cuffie(String nome, String descrizione, int prezzo, int iva, String colore, String tipo) {
-		super(nome,descrizione, prezzo, iva);
+	public Cuffie(String nome, String descrizione, int prezzo, int iva, boolean fidelity, String colore, String tipo) {
+		super(nome,descrizione, prezzo, iva, fidelity);
 		
 		setColore(colore);
 		setTipo(tipo);
@@ -36,5 +36,18 @@ public class Cuffie  extends Prodotto{
 		return super.toString() + "\n"
 				+ "Colore delle cuffie: " + getColore() + "\n"
 				+ "Tipo: " + getTipo();
+	}
+	
+	@Override
+	public String getPrezzoScontato() {
+		
+		if(tipo.equals("cablate")) {
+			double prezzoScontato = Integer.parseInt(getPrezzoFinale()) * 0.93;
+			
+			return String.format("%.2f", prezzoScontato);
+		}
+		else {
+			return super.getPrezzoScontato();
+		}
 	}
 }

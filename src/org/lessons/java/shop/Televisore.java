@@ -8,8 +8,8 @@ public class Televisore extends Prodotto{
 	private boolean smart;
 	
 	//costruttore
-	public Televisore(String nome, String descrizione, int prezzo, int iva, int altezza, int diagonale, int pollici, boolean smart) {
-		super(nome, descrizione, prezzo, iva);
+	public Televisore(String nome, String descrizione, int prezzo, int iva, boolean fidelity, int altezza, int diagonale, int pollici, boolean smart) {
+		super(nome, descrizione, prezzo, iva, fidelity);
 		
 		setAltezza(altezza);
 		setDiagonale(diagonale);
@@ -57,5 +57,18 @@ public class Televisore extends Prodotto{
 		return super.toString() + "\n"
 				+ "Dimensioni televisore: " + String.valueOf(getAltezza()) + "x" + String.valueOf(getDiagonale()) + "\n"
 				+ "Pollici: " + String.valueOf(getPollici()) + "''";
+	}
+	
+	@Override
+	public String getPrezzoScontato() {
+		
+		if(!smart) {
+			double prezzoScontato = Integer.parseInt(getPrezzoFinale()) * 0.90;
+			
+			return String.format("%.2f", prezzoScontato);
+		}
+		else {
+			return super.getPrezzoScontato();
+		}
 	}
 }

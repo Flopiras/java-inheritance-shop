@@ -9,17 +9,28 @@ public class Prodotto {
 	private String descrizione;
 	private int prezzoBase;
 	private int iva;
+	private boolean fidelity;
 	
 	//costruttore
-	public Prodotto(String nome, String descrizione, int prezzo, int iva) {
+	public Prodotto(String nome, String descrizione, int prezzo, int iva, boolean fidelity) {
 		
 		generateCodice();
 		setNome(nome);
 		setDescrizione(descrizione);
 		setPrezzoBase(prezzo);
 		setIva(iva);
+		setFidelity(fidelity);
 	}
 	
+	//setter e getter per la fidelity
+	public boolean isFidelity() {
+		return fidelity;
+	}
+
+	public void setFidelity(boolean fidelity) {
+		this.fidelity = fidelity;
+	}
+
 	//setter e getter per il codice
 	private void setCodice(int codice) {
 		
@@ -83,9 +94,22 @@ public class Prodotto {
 		return String.format("%.2f", prezzoFinale);
 	}
 	
-	//metodo per aavere il nome esteso
+	//metodo per avere il nome esteso
 	public String getNomeEsteso() {
 		return codice + "-" + nome;
+	}
+	
+	//metodo per calcolare il prezzo scontato
+	public String getPrezzoScontato() {
+		if(fidelity) {
+			double prezzoScontato = Integer.parseInt(getPrezzoFinale()) * 0.98;
+			
+			return String.format("%.2f", prezzoScontato);
+		}
+		else {
+			
+			return "Ci dispiace ma questo prodotto non ha sconto";
+		}
 	}
 	
 	@Override
