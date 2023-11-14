@@ -87,4 +87,13 @@ public class Prodotto {
 	public String getNomeEsteso() {
 		return codice + "-" + nome;
 	}
+	
+	@Override
+	public String toString() {
+		return "PRODOTTO: \n" 
+				+ "Nome: " + getNome() + "\n"
+				+ "Descrizione: " + getDescrizione() + "\n"
+				+ "Prezzo : " + getPrezzoFinale();
+				
+	}
 }

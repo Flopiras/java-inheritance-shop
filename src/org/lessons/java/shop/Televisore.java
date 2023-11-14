@@ -45,4 +45,12 @@ public class Televisore extends Prodotto{
 		this.smart = smart;
 	}
 	
+	
+	@Override
+	public String toString() {
+		
+		return super.toString() + "\n"
+				+ "Dimensioni televisore: " + getAltezza() + "x" + getDiagonale() + "\n"
+				+ "Pollici: " + getPollici() + "''";
+	}
 }

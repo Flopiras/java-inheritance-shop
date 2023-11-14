@@ -27,4 +27,11 @@ public class Cuffie  extends Prodotto{
 		this.tipo = tipo;
 	}
 
+	@Override
+	public String toString() {
+		
+		return super.toString() + "\n"
+				+ "Colore delle cuffie: " + getColore() + "\n"
+				+ "Tipo: " + getTipo();
+	}
 }

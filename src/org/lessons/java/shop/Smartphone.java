@@ -27,4 +27,12 @@ public class Smartphone extends Prodotto {
 		this.memoria = memoria;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return super.toString() + "\n"
+				+ "Codice IMEI dello smartphone: " + getCodiceIMEI() + "\n"
+				+ "Memoria smartphone: " + getMemoria();
+	}
+	
 }
